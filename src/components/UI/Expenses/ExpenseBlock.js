@@ -3,16 +3,12 @@ import { View, Text } from 'react-native';
 import { ListItem, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-// TODO: Expense and memo block
-
 export default class ExpenseBlock extends Component {
     constructor (props) {
         super(props);
         
-        let item = { title, description, amount, status } = this.props.item;
-
         this.state = {
-            item: item,
+            item: this.props.item,
         }
     }
 
