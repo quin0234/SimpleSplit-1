@@ -16,7 +16,7 @@ export default class ExpenseList extends Component {
     _renderList () {
         return this.props.items.map( (item) => {
             return (
-                <ExpenseBlock key={item.key} image={item.image} creator={item.creator} title={item.title} description={item.description} />
+                <ExpenseBlock item={item}/>
             );
         });
     }

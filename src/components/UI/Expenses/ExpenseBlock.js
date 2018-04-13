@@ -9,20 +9,15 @@ export default class ExpenseBlock extends Component {
     constructor (props) {
         super(props);
         
+        let item = { title, description, amount, status } = this.props.item;
+
         this.state = {
-            title: !!this.props.title ? this.props.title : "No Title",
-            description: !!this.props.description ? this.props.description : "No Description",
-            // Temporary fix for showcase cause doesnt work
-            amount: !!this.props.amount ? this.props.amount : 40,
-            status: !!this.props.status ? this.props.status : 0,
-            onPress: !!this.props.onPress ? this.props.onPress : null,
-            image: !!this.props.image ? this.props.image : null,
+            item: item,
         }
     }
 
     _onPress = () => {
-        const props = { title, description, status, image, creator, amount } = this.state;
-        Actions.ExpenseInfo(props);
+        Actions.ExpenseInfo({item: this.state.item});
     }
 
     render () {
@@ -31,12 +26,12 @@ export default class ExpenseBlock extends Component {
                 <ListItem onPress={this._onPress} >
                     <Body>
                         
-                        <Text style={{fontSize: 16}}>{this.state.title}</Text>
+                        <Text style={{fontSize: 16}}>{this.state.item.title}</Text>
                        
                         
                         <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                        <Text style={{fontSize:14, color:'#b4b4b4'}} note>{this.state.description}</Text>
-                        <Text>${this.state.amount}.00</Text>
+                        <Text style={{fontSize:14, color:'#b4b4b4'}} note>{this.state.item.description}</Text>
+                        <Text>${this.state.item.amount}</Text>
                         </View>
                     </Body>
                 </ListItem>

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Container, Spinner, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Card, CardItem, DeckSwiper, List, ListItem, } from 'native-base';
 import SummaryAmount from './SummaryAmount';
 import ExpenseList from '../../UI/Expenses/ExpenseList';
-import MainHeader, { HeaderSide, Sides } from '../../UI/Header/MainHeader';
+import MainHeader, { HeaderSide, Sides } from '../../UI/Header';
 import SearchBar from '../../UI/Search/SearchBar';
 import firebase from 'firebase';
 
@@ -65,6 +65,7 @@ class Summary extends Component {
                     status: child.child('status').val(),
                     description: child.child('description').val(),
                     amount: child.child('amount').val(),
+                    category: child.child('category').val(),
                 })
             });
         });
@@ -87,6 +88,7 @@ class Summary extends Component {
                         status: child.child('status').val(),
                         description: child.child('description').val(),
                         amount: child.child('amount').val(),
+                        category: child.child('category').val(),
                     })
                 });
                 this.setState({searchItems: expenses, searchResults: expenses, loaded: true});
