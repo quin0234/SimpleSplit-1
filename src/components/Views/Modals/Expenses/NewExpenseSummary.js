@@ -35,7 +35,13 @@ import BaseImage from '../../../UI/Image/BaseImage';
 
     _onNext = () => {
         const { currentUser } = firebase.auth(); 
-        let expense = { title, description, creator, amount, category, date, status, image} = this.state;
+        let expense = { date, status } = this.state;
+        expense.title = this.state.title != null ? this.state.title : "No Title";
+        expense.description = this.state.description != null ? this.state.description : "No Description";
+        expense.creator = this.state.creator != null ? this.state.creator : 0;
+        expense.amount = this.state.amount != null ? this.state.amount : 0;
+        expense.category = this.state.category != null ? this.state.category : 0;
+        expense.image = this.state.image != null ? this.state.image : "";
 
         firebase.database().ref(`/expenses/${currentUser.uid}`)
         .push(expense)
@@ -52,11 +58,8 @@ import BaseImage from '../../../UI/Image/BaseImage';
         return (
             <Container>
                 <MainHeader title="Summary">
-                        
-                        {/* <Icon name="arrow-back" onPress={this._onBack}> </Icon> */}
-                        <HeaderSide title="back" onPress={this._onBack}/>
-                        {/* <Icon name="md-checkmark" onPress={this._onNext}> </Icon> */}
-                        <HeaderSide title="Save" onPress={this._onNext} />
+                        <HeaderSide icon="arrow-back" onPress={this._onBack}/>
+                        <HeaderSide icon="md-checkmark" onPress={this._onNext} />
                 </MainHeader>
             <Content>
             <Card>
@@ -69,7 +72,7 @@ import BaseImage from '../../../UI/Image/BaseImage';
             <CardItem>
                 <Body>
                     <Text>{this.state.description}</Text>
-                   <View> <Text>{this.state.category}</Text> </View>
+                    <Text>{this.state.category}</Text>
                 </Body>
             </CardItem>
             <CardItem>

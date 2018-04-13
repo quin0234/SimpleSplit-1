@@ -16,7 +16,7 @@ export default class MessageList extends Component {
     _renderList () {
         return this.props.items.map( (item) => {
             return (
-                <MessageBlock key={item.key} image={item.image} creator={item.creator} title={item.title} description={item.description} />
+                <MessageBlock key={item.key} status={item.status} image={item.image} creator={item.creator} title={item.title} description={item.description} />
             );
         });
     }

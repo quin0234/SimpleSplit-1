@@ -86,7 +86,7 @@ const options = [
                 alignItems: 'center',
                 paddingTop: 20
             }}>
-                <Content style={{ background: "#fff"}}>
+                <Content>
                     <Card style={{
                         flex: 1,
                         flexDirection: 'column',

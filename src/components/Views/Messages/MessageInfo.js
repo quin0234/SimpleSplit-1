@@ -31,7 +31,9 @@ export default class MessageInfo extends Component {
                 <Content padder>
                     <View style={{flexDirection:'row', justifyContent:'space-between'}}> 
                     <Text style={{fontSize: 20, margin: 4, marginBottom: 10}}>{this.state.title}</Text> 
-                    <Button style={{borderWidth: 5, backgroundColor:'#e8e2e2', borderColor:'#e8e2e2' ,height: 20, marginTop: 10}}><Text style={{fontWeight:'bold', color:'#3e3e38',  fontSize: 10,}}>{MessageStatuses[this.state.status]}</Text></Button>
+                    <Button style={{borderWidth: 5, backgroundColor:'#e8e2e2', borderColor:'#e8e2e2' ,height: 20, marginTop: 10}}>
+                        <Text style={{fontWeight:'bold', color:'#3e3e38',  fontSize: 10,}}>{MessageStatuses[this.state.status]}</Text>
+                    </Button>
                     </View>
                
                 

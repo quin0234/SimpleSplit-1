@@ -11,7 +11,7 @@ export default class NewMessageInfo extends Component {
         this.state = {
             title: "",
             description: "",
-            image: this.props.image,
+            image: this.props.image || "",
         };
     }
 

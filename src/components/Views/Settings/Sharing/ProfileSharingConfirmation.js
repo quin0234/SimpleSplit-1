@@ -47,7 +47,7 @@ export default class ProfileSharingConfirmation extends Component {
     render () {
         return (
             <Container>
-                <MainHeader color={Colors.Purple} title="Sharing">
+                <MainHeader title="Sharing">
                     <HeaderSide onPress={this._onBack} icon="md-arrow-back" />
                 </MainHeader>
                 <Content padder scrollEnabled={false}>

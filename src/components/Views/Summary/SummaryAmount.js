@@ -134,7 +134,7 @@ class SummaryAmount extends Component {
     }
 
     renderSharing() {
-        if (this.state.connected && this.state.loaded) {
+        if (this.state.loaded) {
             
             return (
                 
@@ -153,23 +153,24 @@ class SummaryAmount extends Component {
 
         } else {
             return (
-                <Card>
-                    <CardItem>
-                        <Body>
-                            <Text>Nothing</Text>
-                        </Body>
-                    </CardItem>
-                </Card>
+                <View/>
             )
         }
     }
 
-    render(){
-        return (
-            <Content padder scrollEnabled={false} style={{maxHeight: 200}}>
-                {this.renderSharing()}
-            </Content>
-        )
+    render() {
+
+        if (this.state.totalExpense != null || this.state.totalExpense <= 0 || this.state.connected) {
+            return (
+                <Content padder scrollEnabled={false} style={{maxHeight: 200}}>
+                    {this.renderSharing()}
+                </Content>
+            )
+        } else {
+            return (
+                <View />
+            )
+        }
     }
 }
 

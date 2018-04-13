@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Moment from 'moment';
 import firebase from 'firebase';
 import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
+import BaseImage from '../../../UI/Image/BaseImage';
 
 class NewMessagePreview extends Component {
     
@@ -18,6 +19,7 @@ class NewMessagePreview extends Component {
             image: this.props.image,
             creator: null,
             status: 0,
+            saved: false,
         };
     }
 
@@ -27,7 +29,13 @@ class NewMessagePreview extends Component {
 
     _onNextPress = () => {
         const { currentUser } = firebase.auth(); 
-        let message = {title, description, date, creator, image, status } = this.state;
+        let message = { date, status } = this.state;
+        message.title = this.state.title != null ? this.state.title : "No Title";
+        message.description = this.state.description != null ? this.state.description : "No Description";
+        message.creator = this.state.creator != null ? this.state.creator : 0;
+        message.category = this.state.category != null ? this.state.category : 0;
+        message.image = this.state.image != null ? this.state.image : "";
+
         
         firebase.database().ref(`/messages/${currentUser.uid}/`)
         .push(message)
@@ -65,11 +73,11 @@ class NewMessagePreview extends Component {
                                 <Text>{this.state.description}</Text>
                             </Body>
                         </CardItem>
-                        {/* <CardItem>
+                        <CardItem>
                          <Body>
                             <BaseImage style={{width: 250, height: 250}} image={this.state.image} />
                         </Body>
-                    </CardItem> */}
+                    </CardItem>
                     </Card>
                 </Content>
             </Container>

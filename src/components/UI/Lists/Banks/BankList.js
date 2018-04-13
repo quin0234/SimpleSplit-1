@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Content } from 'native-base';
 import BankItem from './BankItem';
 import { BankData } from '../../../../Data/index';
 import firebase from 'firebase';
@@ -47,9 +48,9 @@ export default class BankList extends Component {
 
     render () {
         return (
-            <View style={styles.container}>
+            <Content style={styles.container}>
                 {this._renderBankList()}
-            </View>
+            </Content>
         )
     }
 }

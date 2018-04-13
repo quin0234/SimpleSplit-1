@@ -9,20 +9,21 @@ export default class NewMessage extends Component {
         super (props);
 
         this.state = {
-            image: null,
+            image: "",
         }
     }
 
     _onPicture (data) {
-        this.setState({image: data.base64});
-        Actions.newMessageInfo(this.state);
+        this.setState({image: data.base64}, () => {
+            Actions.newMessageInfo({image: this.state.image});
+        });
     }
 
     render () {
         return (
             <Container>
                 <MainHeader title="Capture Image">
-                    <Icon name="close" style={{color:'#fff'}} onPress={() => {Actions.popTo("main")}}/>
+                    <HeaderSide title="Close" onPress={ () => { Actions.popTo("main")}} />
                     <HeaderSide title="Skip" onPress={Actions.newMessageInfo} />
                 </MainHeader>
                 <CameraCapture onPicture={(data) => {this._onPicture(data)}}/>

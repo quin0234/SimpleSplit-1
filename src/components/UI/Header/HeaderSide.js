@@ -26,7 +26,7 @@ export class HeaderSide extends Component {
         text: PropTypes.string,
         title: PropTypes.string,
         onPress: PropTypes.func,
-        side: PropTypes.Sides,
+        side: PropTypes.string,
     }
 
     _onPress = () => {
