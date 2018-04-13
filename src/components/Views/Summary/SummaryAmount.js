@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Linking } from 'react-native';
 import { Card, CardItem, Body, Text, Button, Spinner, Container, Content } from 'native-base';
 import firebase from 'firebase';
 
@@ -121,9 +121,13 @@ class SummaryAmount extends Component {
         }
     }
 
+    _makePayment = () => {
+        Linking.openURL('scotiabank://*');
+    }
+
     _renderPayButton () {
         return (
-            <Button transparent style={{alignSelf:'center', fontSize:'16'}}>
+            <Button onPress={this._makePayment} transparent style={{alignSelf:'center', fontSize:'16'}}>
                 <Text style={{color:'#239b97'}}>MAKE A PAYMENT</Text>
             </Button>
         )
