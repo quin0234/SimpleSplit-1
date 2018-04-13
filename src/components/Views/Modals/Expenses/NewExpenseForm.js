@@ -48,8 +48,8 @@ const options = [
     }
 
     onAmountChange(text){
-        let amount = parseInt(text, 10);
-        if (amount === NaN) {
+        let amount = parseFloat(text);
+        if (isNaN(amount)) {
             this.setState({amount: 0});
         } else {
             this.setState({amount: amount});

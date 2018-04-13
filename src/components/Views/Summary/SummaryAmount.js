@@ -142,8 +142,8 @@ class SummaryAmount extends Component {
                     <CardItem>
                         <Body>
                             <Text style={{alignSelf:'center'}}>You owe </Text> 
-                            <Text style={styles.amountOwed}> 20.00</Text>
-                            <Text style={{alignSelf:'center'}}>Total Expenses  {Math.round(this.state.totalExpense)}</Text>
+                            <Text style={styles.amountOwed}>${isNaN(this.state.amountOwed) ? 0 : this.state.amountOwed}</Text>
+                            <Text style={{alignSelf:'center'}}>Total Expenses  ${isNaN(this.state.totalExpense) ? 0 : this.state.totalExpense}</Text>
                             {this.state.amountOwed > 0 ? this._renderPayButton() : <View/>}
                         </Body>
                     </CardItem>

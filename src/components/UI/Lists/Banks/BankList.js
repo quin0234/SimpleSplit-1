@@ -63,8 +63,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#D0D0D0',
         borderColor: '#B2B2B2',
         borderWidth: StyleSheet.hairlineWidth,
-        flexDirection: 'row',
+        flexDirection: 'column',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
     }
 })
