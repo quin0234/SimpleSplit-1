@@ -4,6 +4,7 @@ import { Text, Card, CardItem, Container, Header, Body, Title, Left, Right, Icon
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import MainHeader, { HeaderSide } from '../../UI/Header/MainHeader';
+import { isNull } from 'util';
 
 export default class ProfileSettings extends Component {
     constructor (props) {
@@ -41,27 +42,25 @@ export default class ProfileSettings extends Component {
         let  { currentUser } = firebase.auth();
 
         let partner = {
-            username: null,
+            username: "No Username",
             uid: null,
         };
 
-        let partnerRef = firebase.database().ref(`/follow/${currentUser.uid}`);
-        partnerRef.once("value", (snapshot) => {
+        firebase.database().ref(`/follow/${currentUser.uid}`).once("value", (snapshot) => {
             snapshot.forEach(function(childSnapshot) {
-              console.log(childSnapshot);
                 partner.uid = childSnapshot.key;
             });
 
-            let partnerNameRef = firebase.database().ref(`/users/${partner.uid}/profile/username/`);
-            partnerNameRef.once("value", (snapshot) => {
-                partner.username = snapshot.val() || null;
+            firebase.database().ref(`/users/${partner.uid}/username/`).once("value", (snapshot) => {
+                if (!isNull(snapshot.val())) {
+                    partner.username = snapshot.val();
+                } else {
+                    partner.username = "No Username";
+                }
             });
+        }).then( () => {
+            this.setState({partner: partner});
         });
-        console.log(partner);
-        if (partner.username == null) {
-          partner.username = "Paul";
-        }
-        this.setState({partner: partner});
     }
 
     async componentDidMount () {

@@ -29,7 +29,7 @@ export default class ProfileSharing extends Component {
 
     async _getUserName () {
         const { currentUser } = firebase.auth(); 
-        const usernameRef = firebase.database().ref(`/users/${currentUser.uid}/profile/username/`);
+        const usernameRef = firebase.database().ref(`/users/${currentUser.uid}/username/`);
 
         usernameRef.on("value", (snapshot) => {
             this.setState({username: snapshot.val() || "No Username"})

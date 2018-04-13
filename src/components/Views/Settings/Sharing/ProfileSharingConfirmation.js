@@ -25,12 +25,14 @@ export default class ProfileSharingConfirmation extends Component {
         const userID = this.state.userID;
 
         firebase.database().ref(`/follow/${userID}/`)
-        .update({[partnerID]: true})
+        .update({[partnerID]: true}).then(() => {
+            Actions.popTo("main");
+        });
     }
 
     async _getUserName () {
         const partner = this.props.partnerID;
-        const usernameRef = firebase.database().ref(`/users/${partner}/profile/username/`);
+        const usernameRef = firebase.database().ref(`/users/${partner}/username/`);
 
         usernameRef.on("value", (snapshot) => {
             this.setState({partnerUsername: snapshot.val() || "No Username"})
@@ -39,9 +41,9 @@ export default class ProfileSharingConfirmation extends Component {
 
     async componentDidMount () {
         const { currentUser } = firebase.auth();
-        await this._getUserName();
-
         this.setState({userID: currentUser.uid});
+
+        await this._getUserName();
     }
 
     render () {
