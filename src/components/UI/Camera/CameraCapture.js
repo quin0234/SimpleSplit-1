@@ -53,8 +53,6 @@ export default class CameraCapture extends Component {
               <Camera ref={ref => {this.camera = ref}} style={{flex: 1}}>
                 <View style={styles.snapButton}>
                   <TouchableOpacity style={[styles.flipButton, styles.picButton, { flex: 0.1, alignSelf: 'flex-end' }]} onPress={this.takePicture.bind(this)}>
-                    {/* <Text style={styles.flipText}>
-                    </Text> */}
                   </TouchableOpacity>
                 </View>
               </Camera>

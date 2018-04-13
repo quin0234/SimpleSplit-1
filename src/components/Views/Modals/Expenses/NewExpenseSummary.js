@@ -15,7 +15,7 @@ import BaseImage from '../../../UI/Image/BaseImage';
           title: this.props.title,
           description: this.props.description,
           creator: 0,
-          amount: this.props.amount,
+          amount: this.props.amount == NaN ? 0 : this.props.amount,
           category: this.props.selected,
           date: 0,
           status: 0,

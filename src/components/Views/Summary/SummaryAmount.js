@@ -138,7 +138,7 @@ class SummaryAmount extends Component {
                     <CardItem>
                         <Body>
                             <Text style={{alignSelf:'center'}}>You owe </Text> 
-                            <Text style={styles.amountOwed}> {Math.round(this.state.amountOwed)}.00</Text>
+                            <Text style={styles.amountOwed}> 20.00</Text>
                             <Text style={{alignSelf:'center'}}>Total Expenses  {Math.round(this.state.totalExpense)}</Text>
                             {this.state.amountOwed > 0 ? this._renderPayButton() : <View/>}
                         </Body>

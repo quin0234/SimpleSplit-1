@@ -4,7 +4,7 @@ import { Container, Header, Left, Body, Right, Button, Content, Card, Item, Icon
 import { Actions } from 'react-native-router-flux';
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import isIPhoneX from 'react-native-is-iphonex';
-import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
+import MainHeader, { HeaderSide, Sides } from '../../../UI/Header/MainHeader';
 import CameraCapture from '../../../UI/Camera/CameraCapture';
 
 class NewExpense extends Component {
@@ -22,13 +22,12 @@ class NewExpense extends Component {
   
   render() {
     return (
-        <Container>
-          <MainHeader title="Capture Receipt">
-            {/* <HeaderSide title="Back" onPress={() => {Actions.popTo("main")}}/> */}
-            <Icon style={styles.closeIcon}  name="close" onPress={() => {Actions.popTo("main")}} > </Icon>
-            <HeaderSide title="Skip" onPress={Actions.newexpenseform} />
-          </MainHeader>
-          <CameraCapture onPicture={(data) => {this._onPicture(data)}}/>
+      <Container>
+            <MainHeader title="Capture Image">
+                <Icon name="close" style={{color:'#fff'}} onPress={() => {Actions.popTo("main")}}/>
+                <HeaderSide title="Skip" onPress={Actions.newexpenseform} />
+            </MainHeader>
+            <CameraCapture onPicture={(data) => {this._onPicture(data)}}/>
         </Container> 
       );
   }     

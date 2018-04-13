@@ -28,7 +28,7 @@ const options = [
         this.state = {
             title: "",
             description: "",
-            amount: "",
+            amount: 0,
             selected: null,
             image: this.props.image
         };
@@ -49,7 +49,11 @@ const options = [
 
     onAmountChange(text){
         let amount = parseInt(text, 10);
-        this.setState({amount: amount});
+        if (amount === NaN) {
+            this.setState({amount: 0});
+        } else {
+            this.setState({amount: amount});
+        }
     }
 
     onDesChange(text){
