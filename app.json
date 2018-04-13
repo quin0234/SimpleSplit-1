@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "SimpleSplit",
+    "description": "This project is really great.",
+    "slug": "SimpleSplit",
+    "privacy": "public",
+    "sdkVersion": "26.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.simple.split",
+      "publishBundlePath": "ios/simplesplit/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/simplesplit/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "com.simple.split"
+    }
+  }
+}
