@@ -13,6 +13,8 @@ export default class MessageList extends Component {
         }
     }
 
+    // TODO: fix duplicates
+    // TODO: Add refresh function
     _renderList () {
         return this.props.items.map( (item) => {
             return (

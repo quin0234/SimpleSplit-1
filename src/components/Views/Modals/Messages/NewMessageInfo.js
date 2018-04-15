@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { Content, Text, Left, Right, Button, Form, Label, Item, Input, Icon, Title, Header, Body, Container } from 'native-base';
 import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
-import BaseImage from '../../../UI/Image/BaseImage';
+import AsyncImage from '../../../UI/Image/AsyncImage';
 
 export default class NewMessageInfo extends Component {
     constructor (props) {
@@ -49,7 +49,7 @@ export default class NewMessageInfo extends Component {
                         <Input onChangeText={ (text) => this.onChangeDescription(text) } value={this.state.description} />
                     </Item>
                     <Item>
-                        <BaseImage style={{width: 340, height: 340}} image={this.state.image} />
+                        <AsyncImage style={{width: 340, height: 340}} image={this.state.image} />
                     </Item>
                 </Form>
             </Container>

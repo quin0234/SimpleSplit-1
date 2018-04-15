@@ -16,7 +16,7 @@ class NewExpense extends Component {
   }
 
   _onPicture (data) {
-    this.setState({image: data.base64});
+    this.setState({image: data.uri});
     Actions.newexpenseform(this.state);
   }
   

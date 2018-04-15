@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import isIPhoneX from 'react-native-is-iphonex';
 
+// TODO: export base64 for the preview images and save only the uri link
 export default class CameraCapture extends Component {
   constructor (props) {
     super (props);
@@ -31,7 +32,7 @@ export default class CameraCapture extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      this.camera.takePictureAsync({base64: true}).then(data => {
+      this.camera.takePictureAsync({quality: 0}).then(data => {
           Vibration.vibrate();
           if (this.props.onPicture && typeof this.props.onPicture === "function") {
             this.props.onPicture(data);

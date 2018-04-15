@@ -3,7 +3,8 @@ import { Container, Content, Text, Form, Button, Icon, Item, Right, Footer, View
 import MainHeader, { HeaderSide } from '../../UI/Header/MainHeader';
 import { Actions } from 'react-native-router-flux';
 import { MessageStatuses } from '../../../Data/StatusData';
-import BaseImage from '../../UI/Image/BaseImage';
+import AsyncImage from '../../UI/Image/AsyncImage';
+import { isNullOrUndefined } from 'util';
 
 export default class MessageInfo extends Component {
     constructor (props) {
@@ -14,7 +15,7 @@ export default class MessageInfo extends Component {
             description: this.props.description || "No Description",
             creator: this.props.creator || "Unknown Creator",
             status: this.props.status || 0,
-            image: this.props.image || null,
+            image: !isNullOrUndefined(this.props.image) ? this.props.image : null,
         }
     }
 
@@ -38,7 +39,7 @@ export default class MessageInfo extends Component {
                
                 
                     <Item style={{borderBottomWidth:0, marginTop: 40}}><Text style={{marginBottom: 5}} >{this.state.description}</Text></Item>
-                    <BaseImage style={{width: 350, height: 350,marginTop: 10, marginBottom: 60}} image={this.state.image} />
+                    <AsyncImage style={{width: "100%", height: 340, marginTop: 10, marginBottom: 10}} source={this.state.image} />
                     <Text style={{color: '#696969'}}>From: {this.props.creator}</Text>
                     <Text style={{color:'#696969'}}>Date: April 13th, 2018, 07:25am</Text>
                 </Content>

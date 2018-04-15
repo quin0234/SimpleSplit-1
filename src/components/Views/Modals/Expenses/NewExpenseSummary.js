@@ -5,7 +5,8 @@ import { Actions } from 'react-native-router-flux';
 import Moment from 'moment';
 import firebase from 'firebase';
 import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
-import BaseImage from '../../../UI/Image/BaseImage';
+import AsyncImage from '../../../UI/Image/AsyncImage';
+import uuid from 'uuid';
 
   class NewExpenseSummary extends Component {
     constructor (props) {
@@ -31,6 +32,23 @@ import BaseImage from '../../../UI/Image/BaseImage';
     componentDidMount () {
         this.getUsername();
         this.setState({date: +Moment()});
+    }
+
+    async uploadImageAsync () {
+        let uri = this.props.image;
+        let {image} = this.state
+        const { currentUser } = firebase.auth(); 
+        const response = await fetch(uri);
+        const blob = await response.blob();
+
+        const ref = firebase.storage()
+            .ref(`/${currentUser.uid}/`)
+            .child(uuid.v4())
+            .put(blob).then((snapshot) => {
+            this.setState({image: snapshot.downloadURL}, () => {
+                this._onNext();
+            })
+        });
     }
 
     _onNext = () => {
@@ -59,7 +77,7 @@ import BaseImage from '../../../UI/Image/BaseImage';
             <Container>
                 <MainHeader title="Summary">
                         <HeaderSide icon="arrow-back" onPress={this._onBack}/>
-                        <HeaderSide icon="md-checkmark" onPress={this._onNext} />
+                        <HeaderSide icon="md-checkmark" onPress={() => {this.uploadImageAsync()}} />
                 </MainHeader>
             <Content>
             <Card>
@@ -77,7 +95,7 @@ import BaseImage from '../../../UI/Image/BaseImage';
             </CardItem>
             <CardItem>
                 <Body>
-                    <BaseImage style={{width: 250, height: 250}} image={this.state.image} />
+                    <AsyncImage style={{width: 250, height: 250}} image={this.state.image} />
                 </Body>
             </CardItem>
         </Card>

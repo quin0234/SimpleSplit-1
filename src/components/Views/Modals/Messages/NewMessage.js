@@ -14,7 +14,7 @@ export default class NewMessage extends Component {
     }
 
     _onPicture (data) {
-        this.setState({image: data.base64}, () => {
+        this.setState({image: data.uri}, () => {
             Actions.newMessageInfo({image: this.state.image});
         });
     }

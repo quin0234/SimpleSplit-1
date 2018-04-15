@@ -13,7 +13,15 @@ export default class ExpenseList extends Component {
         }
     }
 
+    // TODO: fix duplicates
+    // TODO: Add refresh function
     _renderList () {
+        // Loop through and check for duplicates
+        for (var i = 0; i < this.props.items.length; i++) {
+            
+        }
+
+        // Render the list
         return this.props.items.map( (item) => {
             return (
                 <ExpenseBlock key={item.key} item={item}/>

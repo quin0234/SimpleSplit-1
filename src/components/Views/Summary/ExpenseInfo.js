@@ -1,11 +1,11 @@
 import React, { Component} from 'react';
-import { Stylesheet } from 'react-native';
-import { Container, Content, Text, Form, Button, Icon, Item, View } from 'native-base';
+import { Stylesheet, Image } from 'react-native';
+import { Container, Content, Text, Form, Button, Icon, Item, View, Spinner } from 'native-base';
 import MainHeader, { HeaderSide } from '../../UI/Header/MainHeader';
 import { Actions } from 'react-native-router-flux';
 import { ExpenseStatuses } from '../../../Data/StatusData';
 import CategoryData from '../../../Data/';
-import BaseImage from '../../UI/Image/BaseImage';
+import AsyncImage from '../../UI/Image/AsyncImage';
 
 // TODO: StyleSheet
 
@@ -39,7 +39,7 @@ export default class ExpenseInfo extends Component {
                         <Text style={{color: '#3e3e38'}}>${this.state.item.amount}.00</Text>     
                     </View>
                     <Item style={{borderBottomWidth:0}}><Text style={{marginBottom: 0, color:'#3e3e38'}}>{this.state.item.description}</Text></Item>
-                    <BaseImage style={{width: 340, height: 340, marginTop: 10, marginBottom: 10}} image={this.state.item.image} />
+                    <AsyncImage style={{width: 340, height: 340, marginTop: 10, marginBottom: 10}} source={this.state.item.image} />
                     <Button bordered disabled={true} style={{borderRadius: 100, backgroundColor:'#1485ff'}}><Text style={{color:'#fff'}}>{CategoryData[this.state.item.category].title}</Text></Button>
                 </Content>
             </Container>

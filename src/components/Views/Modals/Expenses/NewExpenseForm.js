@@ -3,9 +3,8 @@ import { View, Image, TextInput, StyleSheet} from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Text, Content, Card, Item, Title, Spinner, Input, Thumbnail, Label, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { ActionSheetCustom as ActionSheet } from 'react-native-actionsheet'
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
-import BaseImage from '../../../UI/Image/BaseImage';
+import AsyncImage from '../../../UI/Image/AsyncImage';
 
 const options = [
     <Text style={{color:'#000'}}>None</Text>, 
@@ -120,7 +119,7 @@ const options = [
                     />
             </Item>
             <Item style={{borderBottomWidth:0, marginBottom: 10}}>
-                <BaseImage style={{width: 340, height: 340, marginTop: 10}} image={this.props.image}/>
+                <AsyncImage style={{width: 340, height: 340, marginTop: 10}} image={this.props.image}/>
             </Item>
             <Item style={{borderBottomWidth:0}}>
             <View style={styles.wrapper}>

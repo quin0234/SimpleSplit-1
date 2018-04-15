@@ -5,7 +5,8 @@ import { Actions } from 'react-native-router-flux';
 import Moment from 'moment';
 import firebase from 'firebase';
 import MainHeader, { HeaderSide } from '../../../UI/Header/MainHeader';
-import BaseImage from '../../../UI/Image/BaseImage';
+import AsyncImage from '../../../UI/Image/AsyncImage';
+import uuid from 'uuid';
 
 class NewMessagePreview extends Component {
     
@@ -25,6 +26,23 @@ class NewMessagePreview extends Component {
 
     _onBackPress = () => {
         Actions.pop();
+    }
+
+    async uploadImageAsync () {
+        let uri = this.props.image;
+        let {image} = this.state
+        const { currentUser } = firebase.auth(); 
+        const response = await fetch(uri);
+        const blob = await response.blob();
+
+        const ref = firebase.storage()
+            .ref(`/${currentUser.uid}/`)
+            .child(uuid.v4())
+            .put(blob).then((snapshot) => {
+            this.setState({image: snapshot.downloadURL}, () => {
+                this._onNextPress();
+            })
+        });
     }
 
     _onNextPress = () => {
@@ -58,7 +76,7 @@ class NewMessagePreview extends Component {
             <Container>
                 <MainHeader title="Confirm Message">
                     <HeaderSide icon="arrow-back" onPress={this._onBackPress}/>
-                    <HeaderSide title="Send" onPress={this._onNextPress}/>
+                    <HeaderSide title="Send" onPress={() => {this.uploadImageAsync()}}/>
                 </MainHeader>
                 <Content padder>
                     <Card>
@@ -75,7 +93,7 @@ class NewMessagePreview extends Component {
                         </CardItem>
                         <CardItem>
                          <Body>
-                            <BaseImage style={{width: 250, height: 250}} image={this.state.image} />
+                            <AsyncImage style={{width: 250, height: 250}} image={this.state.image} />
                         </Body>
                     </CardItem>
                     </Card>

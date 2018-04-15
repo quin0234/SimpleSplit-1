@@ -17,6 +17,7 @@ export default class ExpenseBlock extends Component {
     }
 
     render () {
+        console.log(this.state);
         return (
             <View style={{marginBottom: 5}}>
                 <ListItem onPress={this._onPress} >
