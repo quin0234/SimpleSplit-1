@@ -58,7 +58,10 @@ class Summary extends Component {
             snapshot.forEach((child) => { 
                 expenses.push({
                     key: child.key,
-                    creator: this.state.username || "You",
+                    creator: {
+                        username: this.state.username || "You",
+                        uid: currentUser.uid,
+                    },
                     image: child.child('image').val(),
                     date: child.child('date').val(),
                     title: child.child('title').val(),
@@ -81,7 +84,10 @@ class Summary extends Component {
                 snapshot.forEach((child) => { 
                     expenses.push({
                         key: child.key,
-                        creator: this.state.followedUsername || "Partner",
+                        creator: {
+                            username: this.state.followedUsername || "You",
+                            uid: followedID,
+                        },
                         image: child.child('image').val(),
                         date: child.child('date').val(),
                         title: child.child('title').val(),
@@ -103,11 +109,11 @@ class Summary extends Component {
     _renderBody () {
         if (this.state.loaded) {
             return (
-                <Container>
+                <Content scrollEnabled={false}>
                     <SearchBar onChange={(changes) => {this._handleSearchChange(changes)}} items={this.state.searchItems} show={this.state.showSearch}/>
                     <SummaryAmount items={this.state.searchItems} partnerID={this.state.followedUID} />
                     <ExpenseList items={this.state.searchResults} />
-                </Container>
+                </Content>
             )
         } else {
             return (

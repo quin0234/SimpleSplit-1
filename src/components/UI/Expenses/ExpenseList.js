@@ -24,23 +24,21 @@ export default class ExpenseList extends Component {
     render () {
         if (this.state.items.length == 0 || this.state.items == null) {
             return (
-                <Container>
-                    <Container padder>
-                        <Text style={{textAlign: "center", margin: 10}}>You have no expenses</Text>
-                        <Button block onPress={() => Actions.newexpenseModal()}>
-                            <Text>Create a expense</Text>
-                        </Button>
-                    </Container>
+                <Container padder>
+                    <Text style={{textAlign: "center", margin: 10}}>You have no expenses</Text>
+                    <Button block onPress={() => Actions.newexpenseModal()}>
+                        <Text>Create a expense</Text>
+                    </Button>
                 </Container>
             )
         } else {
             return(
                 <Container>
-                    <Content>
-                        <List>
-                            {this._renderList()}
-                        </List>
-                    </Content>
+                <Content>
+                    <List>
+                        {this._renderList()}
+                    </List>
+                </Content>
                 </Container>
             )   
         }

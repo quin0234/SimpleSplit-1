@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { View, StyleSheet, Linking } from 'react-native';
 import { Card, CardItem, Body, Text, Button, Spinner, Container, Content } from 'native-base';
 import firebase from 'firebase';
+import { isNullOrUndefined } from 'util';
 
 
 class SummaryAmount extends Component {
@@ -56,7 +57,7 @@ class SummaryAmount extends Component {
 
             if (this.state.connected) {
                 this.setState({
-                    currentUsername: currentUserInfo.username ? currentUserInfo.username : "You",
+                    currentUsername: isNullOrUndefined(currentUserInfo.username) ? "You" : currentUserInfo.username,
                     currentSalary: currentUserInfo.salary ? currentUserInfo.salary : 0,
                     partnerSalary: partnerUserInfo.salary ? partnerUserInfo.salary : 0,
                     partnerUsername: partnerUserInfo.username ? partnerUserInfo.username : "Partner",
@@ -87,7 +88,7 @@ class SummaryAmount extends Component {
             for (var i = 0; i < expenses.length; i++) {
                 let currentExpense = expenses[i];
                 if (currentExpense.amount != null && currentExpense.amount != "") {
-                    if (currentExpense.creator == this.state.partnerUsername) { 
+                    if (currentExpense.creator.username == this.state.partnerUsername) { 
                         partnerExpenses += currentExpense.amount;
                     } else {
                         userExpenses += currentExpense.amount;
@@ -137,7 +138,6 @@ class SummaryAmount extends Component {
         if (this.state.loaded) {
             
             return (
-                
                 <Card>
                     <CardItem>
                         <Body>
@@ -148,7 +148,6 @@ class SummaryAmount extends Component {
                         </Body>
                     </CardItem>
                 </Card>
-                
             )
 
         } else {
@@ -168,7 +167,7 @@ class SummaryAmount extends Component {
             )
         } else {
             return (
-                <View />
+                <Content scrollEnabled={false} />
             )
         }
     }
