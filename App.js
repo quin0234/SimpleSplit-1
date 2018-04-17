@@ -16,6 +16,7 @@ class App extends Component {
         this.state = { loading: true};
     }
 
+    
     async componentWillMount() {
         await Expo.Font.loadAsync({
             Arial: require('./assets/arial.ttf'),
