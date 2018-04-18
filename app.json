@@ -24,7 +24,8 @@
       "publishManifestPath": "ios/simplesplit/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "com.simple.split"
+      "package": "com.simple.split",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "560934402075",
+    "firebase_url": "https://simplesplit-5d7ab.firebaseio.com",
+    "project_id": "simplesplit-5d7ab",
+    "storage_bucket": "simplesplit-5d7ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560934402075:android:5d54ea07ac218873",
+        "android_client_info": {
+          "package_name": "com.simple.split"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560934402075-98bf7qv45pc001dbt1ft4pfqi66f3at4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd-d504RX2Tpp_ODKDpU4gFmpcLXe3Dm0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
